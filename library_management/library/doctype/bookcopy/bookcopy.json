@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "BookCopy-.####",
+ "creation": "2026-07-30 08:33:41.515819",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bookcopy_section",
+  "book_id",
+  "tittle",
+  "status",
+  "rack",
+  "purchase_date",
+  "condition"
+ ],
+ "fields": [
+  {
+   "fieldname": "book_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Book_Id",
+   "options": "Book",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Available\nIssued\nReserved\nLost\nDamaged\nUnder\nRepair",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "rack",
+   "fieldtype": "Data",
+   "label": "Rack"
+  },
+  {
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date"
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "New\nGood\nFair\nPoor"
+  },
+  {
+   "fetch_from": "book_id.book_title",
+   "fieldname": "tittle",
+   "fieldtype": "Data",
+   "label": "Tittle"
+  },
+  {
+   "fieldname": "bookcopy_section",
+   "fieldtype": "Section Break",
+   "label": "BookCopy"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-31 11:26:14.909993",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "BookCopy",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tittle"
+}

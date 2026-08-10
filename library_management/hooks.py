@@ -4,7 +4,7 @@ app_publisher = "mano"
 app_description = "LibraryManagment "
 app_email = "manomarutharasu@gmail.com"
 app_license = "mit"
-
+app_include_js = "custom_desk.bundle.js"
 # Apps
 # ------------------
 

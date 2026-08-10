@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "RollNumber-.####",
+ "creation": "2026-07-30 08:25:46.148320",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "members_section",
+  "rollnumber",
+  "name1",
+  "membertype",
+  "email",
+  "phone",
+  "address",
+  "join_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "members_section",
+   "fieldtype": "Section Break",
+   "label": "Members"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name",
+   "not_nullable": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "join_date",
+   "fieldtype": "Date",
+   "label": "Join Date"
+  },
+  {
+   "fieldname": "rollnumber",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Roll Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "membertype",
+   "fieldtype": "Link",
+   "label": "MemberType",
+   "options": "MemberShip",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-30 13:38:13.162120",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Member",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "rollnumber"
+}

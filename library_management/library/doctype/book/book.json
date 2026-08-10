@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "Book-.####",
+ "creation": "2026-07-29 21:26:40.880414",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "book_section",
+  "book_title",
+  "isbn",
+  "author",
+  "category",
+  "publisher",
+  "published_year",
+  "total_copies",
+  "avaliable_copies"
+ ],
+ "fields": [
+  {
+   "fieldname": "isbn",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "ISBN",
+   "not_nullable": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "publisher",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Publisher"
+  },
+  {
+   "fieldname": "published_year",
+   "fieldtype": "Int",
+   "label": "Published Year"
+  },
+  {
+   "fieldname": "total_copies",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Copies",
+   "read_only": 1
+  },
+  {
+   "fieldname": "avaliable_copies",
+   "fieldtype": "Int",
+   "label": "Avaliable Copies",
+   "read_only": 1
+  },
+  {
+   "fieldname": "book_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "not_nullable": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "book_section",
+   "fieldtype": "Section Break",
+   "label": "Book"
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Link",
+   "label": "Author",
+   "options": "Author"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-31 15:47:51.411960",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Book",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "book_title"
+}

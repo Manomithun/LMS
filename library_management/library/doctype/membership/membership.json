@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "MemberType-.#####",
+ "creation": "2026-07-30 08:30:47.725053",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "memebership_section",
+  "member_type",
+  "max_book",
+  "borrow_days",
+  "fine_per_day"
+ ],
+ "fields": [
+  {
+   "fieldname": "memebership_section",
+   "fieldtype": "Section Break",
+   "label": "MemeberShip"
+  },
+  {
+   "fieldname": "member_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Member Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "max_book",
+   "fieldtype": "Int",
+   "label": "Max Book",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "borrow_days",
+   "fieldtype": "Int",
+   "label": "Borrow Days",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "fine_per_day",
+   "fieldtype": "Int",
+   "label": "Fine Per Day",
+   "non_negative": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-30 11:15:35.001682",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "MemberShip",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member_type"
+}

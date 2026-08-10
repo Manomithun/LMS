@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "issue-.####",
+ "creation": "2026-07-30 09:03:21.660223",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "book_issue_section",
+  "copyid",
+  "member",
+  "barrowed_date",
+  "due_date",
+  "return_date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "book_issue_section",
+   "fieldtype": "Section Break",
+   "label": "Book Issue"
+  },
+  {
+   "fieldname": "copyid",
+   "fieldtype": "Link",
+   "label": "CopyId",
+   "options": "BookCopy"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fieldname": "barrowed_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Barrowed Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Datetime",
+   "label": "Return Date",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Issued\nReturned\nOverdue"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-04 11:02:02.290079",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Book Issue",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "copyid"
+}

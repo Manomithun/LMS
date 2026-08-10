@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "Fine-.####",
+ "creation": "2026-07-30 10:24:10.856159",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "fine_section",
+  "book_issue_id",
+  "member",
+  "payment_date",
+  "late_days",
+  "fine_amount",
+  "paid_amount",
+  "status",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "book_issue_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Book Issue Id",
+   "options": "Book Issue",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Datetime",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "late_days",
+   "fieldtype": "Int",
+   "label": "Late Days",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "fine_amount",
+   "fieldtype": "Currency",
+   "label": "Fine Amount",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Paid\nUnpaid\nPartially Paid"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Long Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "fine_section",
+   "fieldtype": "Section Break",
+   "label": "Fine"
+  },
+  {
+   "fetch_from": "book_issue_id.member",
+   "fieldname": "member",
+   "fieldtype": "Data",
+   "label": "Member",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-31 10:50:01.359525",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Fine",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "book_issue_id"
+}
