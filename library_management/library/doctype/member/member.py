@@ -1,12 +1,31 @@
 import re
 import frappe
+from frappe.core.doctype.user.user import cached_property
 from frappe.model.document import Document
 from library_management.enums import MembersType
 from frappe.utils import getdate,nowdate
 class Member(Document):
-
+    @cached_property
+    def member_book(self):
+        books = frappe.get_all(
+            "Book Issue",
+            filters={
+                "member": self.name
+            },
+            fields=[
+                "copyid",
+                "due_date"
+            ]
+        )
+        return [
+            {
+                "bookcopy": row.copyid,
+                "duedate": row.due_date
+            }
+            for row in books
+        ]
+    
     def validate(self):
-
         # Get the linked MemberShip document
         membership = frappe.get_doc("MemberShip", self.membertype)
 

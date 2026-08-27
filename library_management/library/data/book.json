@@ -1,0 +1,20 @@
+{
+    "Book-001": {
+        "name": "Book-001",
+        "title": "Python Basic",
+        "author": "John",
+        "price": 700
+    },
+    "Book-002": {
+        "name": "Book-002",
+        "title": "Java Basic",
+        "author": "james",
+        "price": 800
+    },
+    "l2k8sr7785": {
+        "name": "l2k8sr7785",
+        "title": "check",
+        "author": "check author",
+        "price": 5
+    }
+}

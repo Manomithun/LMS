@@ -1,5 +1,12 @@
 {
- "actions": [],
+ "actions": [
+  {
+   "action": "library_management.api.get_library_status",
+   "action_type": "Server Action",
+   "group": "Server Action",
+   "label": "Get greeting "
+  }
+ ],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
  "autoname": "issue-.####",
@@ -13,7 +20,8 @@
   "barrowed_date",
   "due_date",
   "return_date",
-  "status"
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
@@ -31,7 +39,9 @@
    "fieldname": "member",
    "fieldtype": "Link",
    "label": "Member",
-   "options": "Member"
+   "options": "Member",
+   "permlevel": 1,
+   "search_index": 1
   },
   {
    "fieldname": "barrowed_date",
@@ -45,25 +55,37 @@
    "fieldtype": "Datetime",
    "in_list_view": 1,
    "label": "Due Date",
+   "permlevel": 3,
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "return_date",
    "fieldtype": "Datetime",
-   "label": "Return Date",
-   "set_only_once": 1
+   "label": "Return Date"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Issued\nReturned\nOverdue"
+   "options": "Draft\nPending\nApproved\nRejected"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Book Issue",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-08-04 11:02:02.290079",
+ "modified": "2026-08-24 14:18:51.355096",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Book Issue",
@@ -78,7 +100,21 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
+   "role": "Librarian",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Librarian",
+   "select": 1,
    "share": 1,
    "write": 1
   }
@@ -88,5 +124,6 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "copyid"
+ "title_field": "copyid",
+ "track_changes": 1
 }

@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "BookCopy-.####",
  "creation": "2026-07-30 08:33:41.515819",
@@ -31,8 +32,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Available\nIssued\nReserved\nLost\nDamaged\nUnder\nRepair",
-   "read_only": 1,
+   "options": "Available\nApproved\nReserved\nLost\nDamaged\nUnder\nRepair",
    "reqd": 1
   },
   {
@@ -65,8 +65,14 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-07-31 11:26:14.909993",
+ "links": [
+  {
+   "group": "Library",
+   "link_doctype": "Book",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2026-08-21 22:38:07.910678",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "BookCopy",

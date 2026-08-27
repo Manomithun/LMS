@@ -15,7 +15,9 @@
   "fine_amount",
   "paid_amount",
   "status",
-  "remarks"
+  "remarks",
+  "companion_field",
+  "testing"
  ],
  "fields": [
   {
@@ -74,12 +76,24 @@
    "fieldtype": "Data",
    "label": "Member",
    "read_only": 1
+  },
+  {
+   "fieldname": "companion_field",
+   "fieldtype": "Link",
+   "label": "Companion Field",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "testing",
+   "fieldtype": "Dynamic Link",
+   "label": "Testing",
+   "options": "companion_field"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-31 10:50:01.359525",
+ "modified": "2026-08-20 11:57:56.003334",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Fine",

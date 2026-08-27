@@ -12,6 +12,7 @@ class Book(Document):
 	def validate(self):
 		#Getting current date and time
 		current_year=datetime.now().year
+		data = frappe.get_doc("DocType", "Book")
 
         #validating the published year to avoid adding future published year
 		if self.published_year > current_year:
@@ -32,5 +33,18 @@ class Book(Document):
 		})
 
 		self.save()
-	
+
+	def on_update(self):
+
+		# if self.has_value_changed("status") and self.get_doc_before_save().status != self.status :
+		# 	frappe.publish_realtime("status_changed",{
+		# 		"name" : self.name,
+		# 		"status" : self.status
+		# 	})
+		# 	frappe.publish_progress(10, title="Processing")
+		# 	frappe.publish_progress(20, title="Processing")
+		# 	frappe.publish_progress(30, title="Processing")
+		# 	frappe.publish_progress(100, title="Completed")
+		frappe.get_doc("BookCopy","BookCopy-00001")
+		pass
 

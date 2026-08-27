@@ -1,0 +1,10 @@
+{
+ "creation": "2026-08-24 15:30:15.134439",
+ "doc_type": "Book",
+ "doctype": "Permission Type",
+ "modified": "2026-08-24 16:17:41.035902",
+ "modified_by": "Administrator",
+ "name": "book_issue_issue_book",
+ "owner": "Administrator",
+ "perm_type": "Approve"
+}

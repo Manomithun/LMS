@@ -1,0 +1,29 @@
+{
+ "cards": [
+  {
+   "card": "books"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Book",
+   "width": "Half"
+  },
+  {
+   "chart": "Members",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-08-23 23:35:13.454804",
+ "dashboard_name": "Libray_BOoks",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2026-08-23 23:40:34.097691",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Libray_BOoks",
+ "owner": "Administrator"
+}

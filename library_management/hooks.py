@@ -256,3 +256,24 @@ app_include_js = "custom_desk.bundle.js"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+fixtures = [
+    "Author",
+    {
+        "dt" :"DocType",
+        "filters" :[
+            ["name" ,"=","Testing _Custome"]
+        ]
+    }
+]
+
+scheduler_events = {
+    "daily": [
+        "library_management.tasks.task.execute"
+    ]
+}
+
+doc_events = {
+    "User":{
+        "validate" : "library_management.api.custom_logic"
+    }
+}

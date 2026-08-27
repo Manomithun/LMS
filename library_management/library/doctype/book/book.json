@@ -1,6 +1,8 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
+ "allow_copy": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "Book-.####",
  "creation": "2026-07-29 21:26:40.880414",
@@ -8,6 +10,7 @@
  "engine": "InnoDB",
  "field_order": [
   "book_section",
+  "summa_column",
   "book_title",
   "isbn",
   "author",
@@ -15,7 +18,10 @@
   "publisher",
   "published_year",
   "total_copies",
-  "avaliable_copies"
+  "avaliable_copies",
+  "summa",
+  "status",
+  "due_date"
  ],
  "fields": [
   {
@@ -43,12 +49,14 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Total Copies",
+   "permlevel": 1,
    "read_only": 1
   },
   {
    "fieldname": "avaliable_copies",
    "fieldtype": "Int",
    "label": "Avaliable Copies",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -64,7 +72,8 @@
    "fieldname": "category",
    "fieldtype": "Link",
    "label": "Category",
-   "options": "Category"
+   "options": "Category",
+   "permlevel": 3
   },
   {
    "fieldname": "book_section",
@@ -76,12 +85,40 @@
    "fieldtype": "Link",
    "label": "Author",
    "options": "Author"
+  },
+  {
+   "fieldname": "summa_column",
+   "fieldtype": "Column Break",
+   "label": "summa"
+  },
+  {
+   "fieldname": "summa",
+   "fieldtype": "Attach Image",
+   "label": "summa"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Approve\nReject\nOverDue"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
   }
  ],
  "grid_page_length": 50,
+ "image_field": "summa",
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-07-31 15:47:51.411960",
+ "links": [
+  {
+   "group": "Library",
+   "link_doctype": "BookCopy",
+   "link_fieldname": "book_id"
+  }
+ ],
+ "modified": "2026-08-26 16:20:54.752358",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Book",
@@ -97,6 +134,30 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
    "share": 1,
    "write": 1
   }

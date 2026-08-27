@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-08-19 16:21:57.974986",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "memberbook_section",
+  "bookcopy",
+  "duedate"
+ ],
+ "fields": [
+  {
+   "fieldname": "memberbook_section",
+   "fieldtype": "Section Break",
+   "label": "MemberBook"
+  },
+  {
+   "fieldname": "bookcopy",
+   "fieldtype": "Link",
+   "label": "copyid",
+   "options": "BookCopy"
+  },
+  {
+   "fieldname": "duedate",
+   "fieldtype": "Date",
+   "label": "due_date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-23 17:45:46.804810",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Member_book",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

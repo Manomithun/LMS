@@ -8,7 +8,7 @@ from frappe.utils import nowdate,add_days, getdate
 class BookIssue(Document):
 
 	def before_insert(self):
-
+        
 		membership_of_member = self.get_membership()
 		self.barrowed_date = nowdate()
 		allowed_borrow_days = membership_of_member.borrow_days
@@ -18,7 +18,7 @@ class BookIssue(Document):
 							)
 
 	def validate(self):
-
+		frappe.msgprint(str(self.status))
 		book_copy = self.get_book_copy()
 		membership_of_member = self.get_membership()
         
@@ -35,7 +35,7 @@ class BookIssue(Document):
 				"Book Issue",
 				{
 					"member":self.member,
-					"status":"Issued"
+					"status":"Approved"
 				}
 			)
 			if issued_books >= membership_of_member.max_book :
@@ -49,8 +49,8 @@ class BookIssue(Document):
 				frappe.throw("Return date is required.")
 			if getdate(self.return_date) < getdate(self.barrowed_date):
 				frappe.throw("Return date cannot be before borrowed date.")
-			# if getdate(self.return_date) > getdate(nowdate()):
-			# 	frappe.throw("Return date cannot be in the future.")
+			if getdate(self.return_date) > getdate(nowdate()):
+				frappe.throw("Return date cannot be in the future.")
 
 		elif self.return_date:
 			frappe.throw("Status must be 'Returned' when a return date is entered.")		
@@ -59,8 +59,8 @@ class BookIssue(Document):
 
 	def after_insert(self):
 		book_copy = self.get_book_copy()
-		self.change_book_copy_status(book_copy, "Issued")
-		frappe.msgprint("Added Successfully.. book Issued")
+		self.change_book_copy_status(book_copy, "Approved")
+		frappe.msgprint("Added Successfully.. book Issue is approved")
 		book = self.get_book()
 		book.refresh_book_statistics()
 
@@ -122,8 +122,8 @@ class BookIssue(Document):
 
 	def check_book_availability(self,book_copy):
 	
-		if not book_copy.status == "Available" :
-			frappe.throw("Book is not Available")
+		if book_copy.status != "Available":
+			frappe.throw("Book is not available for issue.")
 
 
 
