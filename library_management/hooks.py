@@ -278,6 +278,5 @@ doc_events = {
     }
 }
 commands = [
-    "library_management.commands",
-    "hello"
+    "library_management.commands"
 ]
