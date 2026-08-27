@@ -1,0 +1,38 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 1,
+ "columns": [],
+ "creation": "2026-08-12 14:09:25.243461",
+ "disable_prepared_report_automation": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "doctype_to_sync": [],
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-08-27 16:18:11.944130",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Query-used-report-bookCopy",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "/*SELECT TB.Author,\nTB.Total_Copies,\nTB.Avaliable_Copies,\nTBC.BOOK_ID, \nTBC.TITTLE,\nTBC.STATUS,\nTBC.`CONDITION`,\nTBC.Purchase_Date\nFROM `tabBookCopy` TBC\nJOIN `tabBook` TB \nON TB.NAME=TBC.BOOK_ID*/",
+ "ref_doctype": "BookCopy",
+ "report_name": "Query-used-report-bookCopy",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Librarian"
+  },
+  {
+   "role": "Member"
+  }
+ ],
+ "snapshot_report": 0,
+ "timeout": 5
+}

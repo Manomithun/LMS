@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Tittle</th>
+            <th>Status</th>
+            <th>Condition</th>
+            <th>Purchase Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% for (var i = 0; i < data.length; i++) { %>
+            <tr>
+                <td><%= data[i].book_id %></td>
+                <td><%= data[i].tittle %></td>
+                <td><%= data[i].status %></td>
+                <td><%= data[i].condition %></td>
+                <td><%= dateutil.str_to_user(data[i].purchase_date) %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
