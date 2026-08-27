@@ -263,7 +263,9 @@ fixtures = [
         "filters" :[
             ["name" ,"=","Testing _Custome"]
         ]
-    }
+    },
+    "Client Script",
+    "Custom Field",
 ]
 
 scheduler_events = {
