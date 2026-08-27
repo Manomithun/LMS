@@ -66,3 +66,18 @@ def Reject_book(book_id,):
 def custom_logic(doc, method):
     frappe.msgprint("Hook executed!")
 
+"""Utilities (frappe.utils), Jinja API, Routing & Rendering & Search API  assigment """
+@frappe.whitelist()
+def get_ToDo_details():
+    ToDo_data = frappe.get_list("ToDo",fields =["name","description","owner"])
+    for todo in ToDo_data:
+        todo["email"] = frappe.db.get_value(
+            "User",
+            todo["owner"],
+            "email"
+        )
+    return {
+        "timestamp" : frappe.utils.now(),
+        "records" : ToDo_data
+    }
+
