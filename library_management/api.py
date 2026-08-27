@@ -81,3 +81,11 @@ def get_ToDo_details():
         "records" : ToDo_data
     }
 
+
+"""Assginment task document created and assigned the name of the subject that passed from client script"""
+@frappe.whitelist()
+def create_task(subject_name):
+    task = frappe.new_doc("Task")
+    task.subject_name = subject_name
+    task.save()
+    return task.name

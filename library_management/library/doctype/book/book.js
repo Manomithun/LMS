@@ -44,6 +44,36 @@ frappe.ui.form.on("Book",{
             })
         }
 
+        if (frm.is_new()) {
+
+    let dai = new frappe.ui.Dialog({
+        title: 'Enter the Book Details',
+
+        fields: [
+            {
+                label: 'Title',
+                fieldname: 'title',
+                fieldtype: 'Data'
+            },
+            {
+                label: 'ISBN',
+                fieldname: 'isbn',
+                fieldtype: 'Data'
+            }
+        ],
+
+        primary_action_label: 'Submit',
+
+        primary_action(values) {
+            frm.set_value('book_title', values.title);
+            frm.set_value('isbn', values.isbn);
+
+            dai.hide();
+        }
+    });
+
+    dai.show();
+}
     }
     
 })
