@@ -277,3 +277,7 @@ doc_events = {
         "validate" : "library_management.api.custom_logic"
     }
 }
+commands = [
+    "library_management.commands",
+    "hello"
+]
