@@ -8,7 +8,15 @@
 // });
 
 frappe.ui.form.on("Book Issue",{
-     onload(frm){
+    setup(frm){
+        frm.set_query("copyid",function(){
+            return{
+            query : "library_management.api.get_book_copy_filter"
+
+            }
+        })
+    },
+    onload(frm){
         // frappe.msgprint("Hi from oneload")
     },
     refresh(frm){

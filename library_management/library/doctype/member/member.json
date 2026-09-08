@@ -98,13 +98,26 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2026-08-24 12:52:48.023192",
+ "modified": "2026-08-29 11:02:11.363538",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Member",
  "naming_rule": "Expression",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",

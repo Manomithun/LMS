@@ -45,6 +45,6 @@ class Book(Document):
 		# 	frappe.publish_progress(20, title="Processing")
 		# 	frappe.publish_progress(30, title="Processing")
 		# 	frappe.publish_progress(100, title="Completed")
-		frappe.get_doc("BookCopy","BookCopy-00001")
+		# frappe.get_doc("BookCopy","BookCopy-00001")
 		pass
 

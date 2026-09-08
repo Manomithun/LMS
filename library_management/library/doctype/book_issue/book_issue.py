@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate,add_days, getdate
+from frappe.query_builder import DocType
 
 class BookIssue(Document):
 
@@ -18,6 +19,29 @@ class BookIssue(Document):
 							)
 
 	def validate(self):
+		# frappe.msgprint(self.copyid)
+		test_member = self.member;
+		book_copy_id = self.copyid
+		book_copyy = frappe.get_doc("BookCopy",book_copy_id);
+		bookid =  book_copyy.book_id
+		author = frappe.get_doc("Book",bookid).author
+		authorDoc =DocType("Author")
+		bookDoc = DocType("Book")
+		book_Issue =DocType("Book Issue")
+
+		query = frappe.qb.from_(book_Issue).join(bookDoc).on(bookDoc.name == bookid).join(authorDoc).on(bookDoc.author==author)\
+		.select(book_Issue.name).where(book_Issue.member ==test_member ).where(book_Issue.status == "Approved").where(book_Issue.docstatus ==1)
+		data = query.run(as_dict=True)
+
+		if(data) :
+			frappe.throw("Authors you u have already leand")
+
+		book_issue = frappe.db.get_list("Book Issue",filters = {"member": test_member, "status": "Approved", "copyid": self.copyid, "docstatus":1})
+		if book_issue:
+			frappe.throw("This member has already issued this book copy.")
+	
+		
+
 		frappe.msgprint(str(self.status))
 		book_copy = self.get_book_copy()
 		membership_of_member = self.get_membership()

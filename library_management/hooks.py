@@ -4,11 +4,11 @@ app_publisher = "mano"
 app_description = "LibraryManagment "
 app_email = "manomarutharasu@gmail.com"
 app_license = "mit"
-app_include_js = "custom_desk.bundle.js"
+# app_include_js = "custom_desk.bundle.js"
 # Apps
 # ------------------
 
-# required_apps = []
+# required_apps = [""] -> in this we have to metion other app,if we added the same app then become circular dependency and it will not work. So we have to metion other app name which is required for this app to work properly.
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -16,7 +16,7 @@ app_include_js = "custom_desk.bundle.js"
 # 		"name": "library_management",
 # 		"logo": "/assets/library_management/logo.png",
 # 		"title": "Library Management",
-# 		"route": "/library_management",
+# 		"route": "/library-dashboard",
 # 		"has_permission": "library_management.api.permission.has_app_permission"
 # 	}
 # ]
@@ -25,12 +25,11 @@ app_include_js = "custom_desk.bundle.js"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/library_management/css/library_management.css"
-# app_include_js = "/assets/library_management/js/library_management.js"
-
+# app_include_js = "library_managemet.bundle.js"
+app_include_js = ["event.bundle.js"]
 # include js, css files in header of web template
-# web_include_css = "/assets/library_management/css/library_management.css"
-# web_include_js = "/assets/library_management/js/library_management.js"
+# web_include_css = "/assets/library_management/css/website.css"
+# web_include_js = "/assets/library_management/js/website.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "library_management/public/scss/website"
@@ -68,7 +67,7 @@ app_include_js = "custom_desk.bundle.js"
 # ----------
 
 # automatically create page for each record of this doctype
-# website_generators = ["Web Page"]
+# website_generators = ["Book"]
 
 # automatically load and sync documents of this doctype from downstream apps
 # importable_doctypes = [doctype_1]
@@ -256,29 +255,43 @@ app_include_js = "custom_desk.bundle.js"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
-fixtures = [
-    "Author",
-    {
-        "dt" :"DocType",
-        "filters" :[
-            ["name" ,"=","Testing _Custome"]
-        ]
-    },
-    "Client Script",
-    "Custom Field",
-]
+# fixtures = [
+#     "Author",
+#     {
+#         "dt" :"DocType",
+#         "filters" :[
+#             ["name" ,"=","Testing _Custome"]
+#         ]
+#     },
+#     "Client Script",
+#     "Custom Field",
+# ]
 
-scheduler_events = {
-    "daily": [
-        "library_management.tasks.task.execute"
-    ]
-}
+# scheduler_events = {
+#     "daily": [
+#         "library_management.tasks.task.execute"
+#     ]
+# }
+
+# doc_events = {
+#     "User":{
+#         "validate" : "library_management.api.custom_logic"
+#     }
+# }
+# commands = [
+#     "library_management.commands"
+# ]
+
+sounds = [
+    {
+        "name":"ping",
+        "src" : "/assets/library_management/sounds/ping.mp3",
+        "volume": 0.5
+    }
+]
 
 doc_events = {
-    "User":{
-        "validate" : "library_management.api.custom_logic"
+    "BookCopy" : {
+        "after_save" : "library_management.api.after_save_sound"
     }
 }
-commands = [
-    "library_management.commands"
-]

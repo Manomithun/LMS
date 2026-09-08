@@ -1,91 +1,126 @@
 import frappe
-@frappe.whitelist()
-def getBookList():
-    Book = frappe.qb.DocType("Book")
-    BookCopy = frappe.qb.DocType("BookCopy")
-    query = frappe.qb.from_(Book).join(BookCopy).on(Book.name == BookCopy.book_id).select(Book.name,Book.book_title,BookCopy.status)
-    records = query.run(as_dict = True)
-    if not records:
-        return []
-    doc = frappe.get_doc("Book", records[0]["name"])
-    
-    doc.book_title = "Testing"
-    doc.save()
+import requests
+from frappe import _
 
-    for record in records:
-        frappe.db.set_value(
-            "Book",
-            record["name"],
-            "published_year",
-            2026
+
+@frappe.whitelist()
+def create_google_event(meeting_name):
+    # Get the Meeting document
+    print("Meeting Name:", meeting_name)
+    meeting = frappe.get_doc("Meeting", meeting_name)
+
+    # Get the Google Calendar account of the current user
+    google_calendar = frappe.get_doc(
+        "Google Calendar",
+        {"user": frappe.session.user}
+    )
+
+    # Get a valid Google access token
+    # Frappe's Google Calendar integration handles refreshing
+    # the token using the stored refresh token.
+    access_token = google_calendar.get_access_token()
+
+    if not access_token:
+        frappe.throw(
+            _("Unable to get Google access token. Please connect Google Calendar again.")
         )
-    return records
 
+    # Google Calendar API endpoint
+    url = "https://www.googleapis.com/calendar/v3/calendars/primary/events"
 
-@frappe.whitelist()
-def get_library_status():
-    bookCount = frappe.db.count("Book")
-    members  = frappe.db.count("Member")
-    BookIssued = frappe.db.count("Book Issue", {
-        "status" : "Issued"
-    })
-    available_books = bookCount - BookIssued
-    frappe.msgprint(f"Total Books: {bookCount}, Total Members: {members}, Book Issued: {BookIssued}, Available Books: {available_books}")
-
-    return {
-        "Total_Books" : bookCount,
-        "Total_Members" : members,
-        "Book_Issued" : BookIssued,
-        "Available_book" : available_books
+    # Event data
+    data = {
+        "summary": meeting.subject,
+        "description": meeting.description or "",
+        "start": {
+            "dateTime": meeting.start_datetime.isoformat(),
+            "timeZone": "Asia/Kolkata"
+        },
+        "end": {
+            "dateTime": meeting.end_datetime.isoformat(),
+            "timeZone": "Asia/Kolkata"
+        }
     }
 
+    # Create event in Google Calendar
+    response = requests.post(
+        url,
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json"
+        },
+        json=data
+    )
 
-@frappe.whitelist()
-def Approve_book(book_id):
-    book = frappe.get_doc("Book",book_id)
-
-    if(not frappe.has_permission(book,"Approve")):
-        frappe.throw("You are not premitted to approve",frappe.PermissionError)
-
-    book.status = "Approve"
-    book.save()
-    return 1
-
-@frappe.whitelist()
-def Reject_book(book_id,):
-    book = frappe.get_doc("Book",book_id)
-    if(not frappe.has_permission(book,"Reject")):
-            frappe.throw("You are not premitted to Reject",frappe.PermissionError)
-    
-    book.status = "Reject"
-    book.save()
-    return 2
-
-
-
-def custom_logic(doc, method):
-    frappe.msgprint("Hook executed!")
-
-"""Utilities (frappe.utils), Jinja API, Routing & Rendering & Search API  assigment """
-@frappe.whitelist()
-def get_ToDo_details():
-    ToDo_data = frappe.get_list("ToDo",fields =["name","description","owner"])
-    for todo in ToDo_data:
-        todo["email"] = frappe.db.get_value(
-            "User",
-            todo["owner"],
-            "email"
+    # Handle Google API errors
+    if response.status_code not in (200, 201):
+        frappe.throw(
+            _("Google Calendar error: {0}").format(response.text)
         )
+
+    # Convert Google response to Python dictionary
+    google_event = response.json()
+
+    # Store Google Event ID in Frappe
+    meeting.db_set(
+        "google_event_id",
+        google_event["id"]
+    )
+    print("Google Event ID:", google_event["id"])
     return {
-        "timestamp" : frappe.utils.now(),
-        "records" : ToDo_data
+        "success": True,
+        "google_event_id": google_event["id"],
+        "google_event_url": google_event.get("htmlLink")
     }
 
+# code for backup 
+# import os
+# import frappe
+# import requests
+# from frappe import _
 
-"""Assginment task document created and assigned the name of the subject that passed from client script"""
-@frappe.whitelist()
-def create_task(subject_name):
-    task = frappe.new_doc("Task")
-    task.subject_name = subject_name
-    task.save()
-    return task.name
+
+# def upload_to_google_drive(file_path, access_token, folder_id):
+#     file_name = os.path.basename(file_path)
+
+#     metadata = {
+#         "name": file_name,
+#         "parents": [folder_id],
+#     }
+
+#     with open(file_path, "rb") as file:
+#         response = requests.post(
+#             "https://www.googleapis.com/upload/drive/v3/files",
+#             params={
+#                 "uploadType": "multipart"
+#             },
+#             headers={
+#                 "Authorization": f"Bearer {access_token}",
+#             },
+#             files={
+#                 "metadata": (
+#                     None,
+#                     frappe.as_json(metadata),
+#                     "application/json; charset=UTF-8"
+#                 ),
+#                 "file": (
+#                     file_name,
+#                     file,
+#                     "application/octet-stream"
+#                 ),
+#             },
+#         )
+
+#     if response.status_code not in (200, 201):
+#         frappe.throw(
+#             _("Google Drive upload failed: {0}")
+#             .format(response.text)
+#         )
+
+#     return response.json()
+
+# scheduler_events = {
+#     "daily": [
+#         "library_management.api.backup_to_google_drive"
+#     ]
+# }

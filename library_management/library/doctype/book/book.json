@@ -1,5 +1,11 @@
 {
- "actions": [],
+ "actions": [
+  {
+   "action": "author",
+   "action_type": "Route",
+   "label": "Author"
+  }
+ ],
  "allow_bulk_edit": 1,
  "allow_copy": 1,
  "allow_import": 1,
@@ -118,7 +124,7 @@
    "link_fieldname": "book_id"
   }
  ],
- "modified": "2026-08-26 16:20:54.752358",
+ "modified": "2026-08-31 17:30:17.708555",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Book",

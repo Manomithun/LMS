@@ -13,6 +13,10 @@ frappe.realtime.on("status_changed",(data)=>{
 
 frappe.ui.form.on("Book",{
     refresh(frm){
+        frappe.msgprint(__("Welcome to the Book Form! Please fill in the details below."));
+        // console.log(frappe.session.user)
+        // console.log(frappe.csrf_token)
+        
         if(frappe.perm.has_perm(frm.doctype,0,"Approve",frm.doc.name)){
             frm.add_custom_button(__('Approve'),()=>{
                 frappe.call({
@@ -44,6 +48,7 @@ frappe.ui.form.on("Book",{
             })
         }
 
+
         if (frm.is_new()) {
 
     let dai = new frappe.ui.Dialog({
@@ -74,6 +79,9 @@ frappe.ui.form.on("Book",{
 
     dai.show();
 }
+    },
+    after_save(frm){
+        frappe.utils.play_sound("ping")
     }
     
 })

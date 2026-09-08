@@ -11,3 +11,25 @@ frappe.query_reports["Query-used-report-bookCopy"] = {
 		// },
 	],
 };
+
+
+// frappe.query_reports["Query-used-report-bookCopy"] = {
+//     filters: [
+//         {
+//             fieldname: "status",
+//             label: __("Status"),
+//             fieldtype: "Select",
+//             options: "Available\nIssued\nOverDue"
+//         },
+//         {
+//             fieldname: "author",
+//             label: __("Author"),
+//             fieldtype: "Data"
+//         },
+//         {
+//             fieldname: "due_date",
+//             label: __("Due Date"),
+//             fieldtype: "Date"
+//         }
+//     ]
+// };
