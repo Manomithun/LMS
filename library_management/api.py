@@ -129,5 +129,5 @@ def create_google_event(meeting_name):
 @rate_limit(limit=5,seconds=60)
 def limited_greeting():
     logger = frappe.logger()
-    logger.info("Endpoint called")
+    logger.info("Endpoint called!")
     frappe.response["message"] = 'Hello Rate Limited World!'
