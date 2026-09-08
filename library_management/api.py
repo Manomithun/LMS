@@ -1,7 +1,7 @@
 import frappe
 import requests
 from frappe import _
-
+from frappe.rate_limiter import rate_limit
 
 @frappe.whitelist()
 def create_google_event(meeting_name):
@@ -124,3 +124,10 @@ def create_google_event(meeting_name):
 #         "library_management.api.backup_to_google_drive"
 #     ]
 # }
+
+@frappe.whitelist(allow_guest=True)
+@rate_limit(limit=5,seconds=60)
+def limited_greeting():
+    logger = frappe.logger()
+    logger.info("Endpoint called")
+    frappe.response["message"] = 'Hello Rate Limited World!'

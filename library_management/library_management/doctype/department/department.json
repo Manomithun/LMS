@@ -17,7 +17,8 @@
  "fields": [
   {
    "fieldname": "section_break_biyn",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Department"
   },
   {
    "fieldname": "lft",
@@ -46,14 +47,14 @@
    "fieldtype": "Link",
    "hidden": 1,
    "label": "Old Parent",
-   "options": "Dapartment"
+   "options": "Department"
   },
   {
    "fieldname": "parent_dapartment",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
    "label": "Parent Dapartment",
-   "options": "Dapartment"
+   "options": "Department"
   },
   {
    "fieldname": "department_name",
@@ -67,7 +68,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2026-08-26 14:44:57.775373",
+ "modified": "2026-09-08 12:26:07.562901",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Department",
